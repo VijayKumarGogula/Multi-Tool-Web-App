@@ -1,0 +1,388 @@
+
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    outline:0;
+    transition: all 0.5s ease;
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y:hidden; /* Disable horizontal scrolling */
+    background:linear-gradient(to right, #9796f0,#fbc7d4);
+}
+
+.main-container {
+    display: grid;
+    place-items: center; /* Center the content vertically and horizontally */
+    height: 100vh; /* Full viewport height */
+}
+
+.tab-contents {
+    display: none;
+}
+
+.tab-contents.active-tab {
+    display: block;
+}
+
+.tab-titles{
+    display:flex;
+    justify-content: center;
+    margin-top: 40px;
+    
+}
+
+.tab-links{
+    margin:0 15px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor:pointer;
+    position:relative;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#e9e2e4;
+    transition:color 0.3s;
+    
+}
+.tab-links:hover{
+    
+    color: #191f36;
+}
+
+
+.tab-links::after{
+    content:'';
+    width:0;
+    height:3px;
+    background:#ff004f;
+    position:absolute;
+    left:0;
+    top:25px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link{
+    font-weight: 700;
+}
+.tab-links.active-link::after{
+    width:50%;
+}
+
+.container-calc{
+    height:100vh;
+    width:100vw;
+    margin-top:-2%;
+    display:grid;
+    place-items: center;
+}
+
+.calculator{
+    position: relative;
+    height:auto;
+    width:auto; 
+    padding:20px;
+    border-radius:10px;
+    box-shadow: 0 0 30px #000;
+}
+
+
+.theme-toggler{
+    position:absolute;
+    top:30px;
+    right:30px;
+    color: #fff;
+    cursor:pointer;
+    z-index: 1;
+}
+
+.theme-toggler.active{
+    color:#333;
+}
+.theme-toggler.active::before{
+    background-color: #fff;
+}
+
+.theme-toggler::before{
+    content:'';
+    height:30px;
+    width:30px;
+    position:absolute;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background-color: #333;
+    z-index: -1;
+}
+
+#display{
+    margin:0 10px;
+    height:150px;
+    width:auto;
+    max-width:270px ;
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 30px;
+    margin-bottom: 20px;
+    overflow-x:scroll;
+}
+
+#display::-webkit-scrollbar{
+    display: block;
+    height:3px;
+}
+
+button{
+    height: 60px;
+    width:60px;
+    border:0;
+    border-radius: 30px;
+    margin:5px;
+    font-size: 20px;
+    cursor:pointer;
+    transition: all 200ms ease;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+button#equal{
+    height:130px;
+}
+
+
+/*light theme*/
+
+.calculator{
+    background-color: #fff;
+}
+
+.calculator#display{
+    color:#0a1e23;
+}
+
+.calculator button#clear{
+    background-color: #ffd5d8;
+    color:#fc4552;
+}
+
+
+.calculator button.btn-number{
+    background-color: #c3eaff;
+    color:#000;
+}
+
+.calculator button.btn-operator{
+    background-color: #ffd0fd;
+    color:#f967f3;
+}
+
+.calculator button.btn-equal{
+    background-color: #adf9e7;
+    color:#000;
+}
+
+/*dark-theme*/
+
+.calculator.dark{
+    background-color: #071115;
+}
+
+.calculator.dark #display{
+    color:#f8fafd;
+}
+
+.calculator.dark button#clear{
+    background-color: #2d191e;
+    color:#bd3740;
+}
+
+.calculator.dark button.btn-number{
+    background-color: #1b2f38;
+    color:#f8fafb;
+}
+
+.calculator.dark button.btn-operator{
+    background-color: #2e1f39;
+    color:#aa00a4;
+}
+
+.calculator.dark button.btn-equal{
+    background-color: #223323;
+    color:#ffffff;
+}
+/*calendar*/
+
+h1{
+    font-weight: 600;
+    text-align: center;
+    color:#fff;
+    margin-bottom: 2rem;
+}
+
+h3{
+    font-weight: 600;
+
+}
+
+.calendar{
+    margin-bottom: 40%;
+
+    width:380px;
+    padding:1rem;
+    background:#fff;
+    border-radius:10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.calendar header{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.calendar ul{
+    list-style: none;
+    display:flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+
+.calendar ul li{
+    width:calc(100% /7);
+    margin-top: 25px;
+    position:relative;
+    z-index: 2;
+}
+
+#prev, #next{
+    width:20px;
+    height:20px;
+    position: relative;
+    border:none;
+    background:transparent;
+    cursor:pointer;
+}
+
+#prev::before, #next::before{
+    content:'';
+    width:50%;
+    height:50%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0;
+    border-color: #ccc;
+}
+
+#next::before{
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+
+#prev::before{
+    transform: translate(-50%,-50%) rotate(-135deg);
+}
+
+#prev:hover::before,
+#next:hover::before{
+    border-color: #000;
+}
+.days{
+    font-weight: 600;
+}
+
+.dates li.today{
+    color:#fff;
+}
+
+.dates li.today::before{
+    content:'';
+    width:2rem;
+    height:2rem;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#000;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.days li.inactive{
+    color:#ccc;
+}
+
+/*Stopwatch*/
+
+.container-stop{
+    width:330px;
+    margin-top:7%;
+    margin-bottom: 20%;
+    height:500px;
+    background-color: rgba(60,61,63,0.6);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+}
+.stopwatch {
+    margin: 30px auto 60px; /* Adjust margin */
+    text-align: center;
+    font-size: 30px; /* Adjust font size */
+    font-family: sans-serif;
+    color: #fff;
+}
+
+#result{
+    margin-top:15%;
+    margin-left: 20%;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    border:5px solid rgba(19, 150, 150, 0.682);
+    box-shadow:1px 1px 2px rgba(0,0,0,0.3);
+}
+
+#result span{
+    position: relative;
+    top:70px;
+    font-size: 38px;
+    font-family: sans-serif;
+    color:#fff;
+}
+
+
+.btns{
+    margin-top: 15%;
+
+}
+
+.stopwatch {
+    margin: 60px auto;
+    text-align: center;
+}
+
+.btns button {
+    border: 2px solid #000;
+    color: #fff;
+    background-color: rgba(17, 18, 19, 0.6);
+    border: none;
+    padding: 15px 20px; /* Adjust padding */
+    border-radius: 25px;
+    backdrop-filter: blur();
+    transition: 0.5s;
+    width: 150px; /* Set a fixed width */
+    font-size: 18px; /* Adjust font size */
+}
+
+.btns button:hover {
+    box-shadow: 0 0 1.5rem rgba(19, 150, 150, 0.682);
+    color: rgb(21, 152, 152, 0.782);
+    transform: translateY(-3px); /* Adjust transform */
+    cursor: pointer;
+    transition: transform 120ms;
+}
+

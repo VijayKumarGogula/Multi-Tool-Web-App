@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Multi-Tool Web App</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('calculator')">Calculator</p>
+            <p class="tab-links" onclick="opentab('calendar')">Calendar</p>
+            <p class="tab-links" onclick="opentab('stopwatch')">Stopwatch</p>
+        </div>
+
+        <!--Calculator Design-->
+        <div class="tab-contents active-tab"id="calculator">
+            <div class="container-calc" >
+                <div class="calculator dark">
+                    <div class="theme-toggler active">
+                        <i class="toggler-icon"></i>
+                    </div>
+                    <div class="display-screen">
+                        <div id="display"></div>
+                    </div>
+                    <div class="buttons">
+                        <table>
+                            <tr>
+                                <td><button class="btn-operator" id="clear">C</button></td>
+                                <td><button class="btn-operator">&divide;</button></td>
+                                <td><button class="btn-operator">&times;</button></td>
+                                <td><button class="btn-operator" id="backspace"><</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn-number">7</button></td>
+                                <td><button class="btn-number">8</button></td>
+                                <td><button class="btn-number">9</button></td>
+                                <td><button class="btn-operator">-</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn-number">4</button></td>
+                                <td><button class="btn-number">5</button></td>
+                                <td><button class="btn-number">6</button></td>
+                                <td><button class="btn-operator">+</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn-number">1</button></td>
+                                <td><button class="btn-number">2</button></td>
+                                <td><button class="btn-number">3</button></td>
+                                <td rowspan="2"><button class="btn-equal" id="equal">=</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn-operator">(</button></td>
+                                <td><button class="btn-number">0</button></td>
+                                <td><button class="btn-operator">)</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!--Calendar Design-->
+        <div class="tab-contents" id="calendar">
+            <div class="calendar">
+                <header>
+                    <h3></h3>
+                    <nav>
+                        <button id="prev"></button>
+                        <button id="next"></button>
+                    </nav>
+                </header>
+                <section>
+                    <ul class="days">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                    </ul>
+                    <ul class="dates"></ul>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="script1.js"></script>
+
+
+        <!--Stopwatch design-->
+        <div class="tab-contents" id="stopwatch">
+            <div class="container-stop" id="container">
+                <div class="stopwatch">
+                    <h4>STOP WATCH</h4>
+                    <div id="result">
+                        <span id="hour">00:</span>
+                        <span id="minute">00:</span>
+                        <span id="seconds">00</span>
+                    </div>
+                    <div class="btns">
+                        <button onclick="object.start()">Start</button>
+                        <button onclick="object.stop()">Stop</button>
+                        <button onclick="object.reset()">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
